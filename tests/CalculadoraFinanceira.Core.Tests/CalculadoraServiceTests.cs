@@ -24,8 +24,8 @@ namespace CalculadoraFinanceira.Core.Tests
         public static IEnumerable<object[]> JurosCompostosData()
         {
             yield return new object[] { new CalcularJurosInput(1000, 0.02, 12), 1268.24, 268.24 };
-            yield return new object[] { new CalcularJurosInput(500, 0.05, 6), 671.56, 171.56 };
-            yield return new object[] { new CalcularJurosInput(2000, 0.015, 24), 2863.92, 863.92 };
+            yield return new object[] { new CalcularJurosInput(500, 0.05, 6), 670.05, 170.05 };
+            yield return new object[] { new CalcularJurosInput(2000, 0.015, 24), 2859.01, 859.01 };
         }
 
         [Theory]
