@@ -82,9 +82,9 @@ namespace CalculadoraFinanceira.Core.Tests
 
         public static IEnumerable<object[]> ValorFuturoData()
         {
-            yield return new object[] { new ValorFuturoInput(1000, 200, 0.01, 12), 3774.39 };
-            yield return new object[] { new ValorFuturoInput(5000, 0, 0.005, 24), 5628.89 };
-            yield return new object[] { new ValorFuturoInput(0, 500, 0.02, 10), 5494.56 };
+            yield return new object[] { new ValorFuturoInput(1000, 200, 0.01, 12), 3663.33 };
+            yield return new object[] { new ValorFuturoInput(5000, 0, 0.005, 24), 5635.80 };
+            yield return new object[] { new ValorFuturoInput(0, 500, 0.02, 10), 5474.86 };
         }
 
         [Theory]
