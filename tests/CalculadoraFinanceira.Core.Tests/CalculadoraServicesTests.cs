@@ -57,9 +57,9 @@ namespace CalculadoraFinanceira.Core.Tests
         public static IEnumerable<object[]> FinanciamentoSACData()
         {
             // Valor, Taxa, Parcelas, PrimeiraParcela, UltimaParcela, TotalPago, TotalJuros
-            yield return new object[] { new FinanciamentoInput(12000, 0.02, 12), 1200, 1020, 13320, 1320 };
-            yield return new object[] { new FinanciamentoInput(6000, 0.015, 6), 1150, 1025, 6525, 525 };
-            yield return new object[] { new FinanciamentoInput(20000, 0.01, 10), 3000, 2020, 22100, 2100 };
+            yield return new object[] { new FinanciamentoInput(12000, 0.02, 12), 1240, 1020, 13560, 1560 };
+            yield return new object[] { new FinanciamentoInput(6000, 0.015, 6), 1090, 1015, 6315, 315 };
+            yield return new object[] { new FinanciamentoInput(20000, 0.01, 10), 2200, 2020, 21100, 1100 };
         }
 
         [Theory]
