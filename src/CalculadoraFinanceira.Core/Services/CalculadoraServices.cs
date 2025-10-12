@@ -3,7 +3,7 @@ using CalculadoraFinanceira.Core.Models.Outputs;
 
 namespace CalculadoraFinanceira.Core.Services;
 
-public class CalculadoraService
+public class CalculadoraServices
 {
     public static CalcularJurosOutput JurosSimples(CalcularJurosInput input)
     {
@@ -21,7 +21,7 @@ public class CalculadoraService
 
     public static FinanciamentoPriceOutput FinanciamentoPrice(FinanciamentoInput input)
     {
-        double valorParcela = (input.Valor * input.Taxa) / (1 - Math.Pow(1 + input.Taxa, -input.Parcelas));
+        double valorParcela = Math.Round((input.Valor * input.Taxa) / (1 - Math.Pow(1 + input.Taxa, -input.Parcelas)), 2);
         double totalPago = valorParcela * input.Parcelas;
         double totalJuros = totalPago - input.Valor;
         return new FinanciamentoPriceOutput(valorParcela, totalPago, totalJuros);

@@ -3,7 +3,7 @@ using CalculadoraFinanceira.Core.Services;
 
 namespace CalculadoraFinanceira.Core.Tests
 {
-    public class CalculadoraServiceTests
+    public class CalculadoraServicessTests
     {
         public static IEnumerable<object[]> JurosSimplesData()
         {
@@ -16,7 +16,7 @@ namespace CalculadoraFinanceira.Core.Tests
         [MemberData(nameof(JurosSimplesData))]
         public void JurosSimples_DeveCalcularCorretamente(CalcularJurosInput input, double montanteEsperado, double jurosEsperado)
         {
-            var resultado = CalculadoraService.JurosSimples(input);
+            var resultado = CalculadoraServices.JurosSimples(input);
             Assert.Equal(montanteEsperado, resultado.MontanteFinal, 2);
             Assert.Equal(jurosEsperado, resultado.ValorTotalDoJuros, 2);
         }
@@ -32,26 +32,26 @@ namespace CalculadoraFinanceira.Core.Tests
         [MemberData(nameof(JurosCompostosData))]
         public void JurosCompostos_DeveCalcularCorretamente(CalcularJurosInput input, double montanteEsperado, double jurosEsperado)
         {
-            var resultado = CalculadoraService.JurosCompostos(input);
+            var resultado = CalculadoraServices.JurosCompostos(input);
             Assert.Equal(montanteEsperado, resultado.MontanteFinal, 2);
             Assert.Equal(jurosEsperado, resultado.ValorTotalDoJuros, 2);
         }
 
         public static IEnumerable<object[]> FinanciamentoPriceData()
         {
-            yield return new object[] { new FinanciamentoInput(10000, 0.02, 12), 943, 11316, 1316 };
-            yield return new object[] { new FinanciamentoInput(5000, 0.015, 24), 246, 5904, 904 };
-            yield return new object[] { new FinanciamentoInput(20000, 0.01, 36), 664, 23904, 3904 };
+            yield return new object[] { new FinanciamentoInput(10000, 0.02, 12), 945.60, 11347.20, 1347.20 };
+            yield return new object[] { new FinanciamentoInput(5000, 0.015, 24), 249.62, 5990.88, 990.88 };
+            yield return new object[] { new FinanciamentoInput(20000, 0.01, 36), 664.29, 23914.44, 3914.44 };
         }
 
         [Theory]
         [MemberData(nameof(FinanciamentoPriceData))]
         public void FinanciamentoPrice_DeveCalcularCorretamente(FinanciamentoInput input, double parcelaEsperada, double totalPagoEsperado, double jurosEsperado)
         {
-            var resultado = CalculadoraService.FinanciamentoPrice(input);
-            Assert.Equal(parcelaEsperada, resultado.Parcela, 0);
-            Assert.Equal(totalPagoEsperado, resultado.TotalPago, 0);
-            Assert.Equal(jurosEsperado, resultado.TotalJuros, 0);
+            var resultado = CalculadoraServices.FinanciamentoPrice(input);
+            Assert.Equal(parcelaEsperada, resultado.Parcela, 2);
+            Assert.Equal(totalPagoEsperado, resultado.TotalPago, 2);
+            Assert.Equal(jurosEsperado, resultado.TotalJuros, 2);
         }
 
         public static IEnumerable<object[]> FinanciamentoSACData()
@@ -66,7 +66,7 @@ namespace CalculadoraFinanceira.Core.Tests
         [MemberData(nameof(FinanciamentoSACData))]
         public void FinanciamentoSAC_DeveCalcularCorretamente(FinanciamentoInput input, double primeiraParcela, double ultimaParcela, double totalPago, double totalJuros)
         {
-            var lista = CalculadoraService.FinanciamentoSAC(input);
+            var lista = CalculadoraServices.FinanciamentoSAC(input);
             Assert.Equal(primeiraParcela, lista[0].ValorParcela, 0);
             Assert.Equal(ultimaParcela, lista[^1].ValorParcela, 0);
             double somaParcelas = 0;
@@ -91,7 +91,7 @@ namespace CalculadoraFinanceira.Core.Tests
         [MemberData(nameof(ValorFuturoData))]
         public void ValorFuturo_DeveCalcularCorretamente(ValorFuturoInput input, double valorEsperado)
         {
-            var resultado = CalculadoraService.ValorFuturo(input);
+            var resultado = CalculadoraServices.ValorFuturo(input);
             Assert.Equal(valorEsperado, resultado, 2);
         }
     }
